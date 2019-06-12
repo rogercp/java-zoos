@@ -24,6 +24,12 @@ public class Animal
     {
     }
 
+    public Animal(String animaltype, List<Zoo> zoos)
+    {
+        this.animaltype = animaltype;
+        this.zoos = zoos;
+    }
+
     public Animal(String animaltype)
     {
         this.animaltype = animaltype;
