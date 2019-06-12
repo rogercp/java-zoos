@@ -10,4 +10,5 @@ public interface ZooService
     ArrayList<Zoo> findAll();
 
 
+    void delete (long id);
 }

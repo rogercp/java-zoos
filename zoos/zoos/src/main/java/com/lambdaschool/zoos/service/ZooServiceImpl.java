@@ -8,6 +8,8 @@ import com.lambdaschool.zoos.view.CountZoosOfAnimals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 
 @Service(value = "zooService")
@@ -23,5 +25,18 @@ public class ZooServiceImpl implements ZooService
         return list;
     }
 
+    @Transactional
+    @Override
+    public void delete(long id) throws EntityNotFoundException
+    {
+        if(zoorepos.findById(id).isPresent())
+        {
+            zoorepos.deleteZooFromZoos(id);
+            zoorepos.deleteById(id);
+        }else
+        {
+            throw new EntityNotFoundException(Long.toString(id));
+        }
+    }
 
 }
