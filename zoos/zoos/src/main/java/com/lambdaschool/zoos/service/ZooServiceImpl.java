@@ -1,6 +1,7 @@
 package com.lambdaschool.zoos.service;
 
 
+import com.lambdaschool.zoos.model.Telephone;
 import com.lambdaschool.zoos.model.Zoo;
 import com.lambdaschool.zoos.repository.AnimalRepository;
 import com.lambdaschool.zoos.repository.ZooRespository;
@@ -41,4 +42,60 @@ public class ZooServiceImpl implements ZooService
         }
     }
 
+    @Transactional
+    @Override
+    public  Zoo save(Zoo zoo)
+    {
+        Zoo newZoo=new Zoo();
+        newZoo.setZooname(zoo.getZooname());
+
+        for(Telephone t :zoo.getPhones())
+        {
+            newZoo.getPhones().add(new Telephone(t.getPhonetype(),t.getPhonenumber()));
+        }
+        zoorepos.save(newZoo);
+        return newZoo;
+    }
+
+    @Override
+    public Zoo update(Zoo zoo,long id)
+    {
+        Zoo currentZoo= zoorepos.findById(id).orElseThrow(()->new EntityNotFoundException(Long.toString(id)));
+        if(zoo.getZooname()!=null)
+        {
+            currentZoo.setZooname(zoo.getZooname());
+        }
+        if(zoo.getPhones().size()>0)
+        {
+            for(Telephone t : zoo.getPhones())
+            {
+                currentZoo.getPhones().add(new Telephone(t.getPhonetype(),t.getPhonenumber()));
+            }
+        }
+        return zoorepos.save(currentZoo);
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

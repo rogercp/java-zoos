@@ -34,6 +34,11 @@ public class Zoo
     {
     }
 
+    public Zoo(String zooname)
+    {
+        this.zooname = zooname;
+    }
+
     public Zoo(String zooname, List<Telephone> phones, List<Animal> animals)
     {
         this.zooname = zooname;

@@ -24,11 +24,11 @@ public class Telephone
     {
     }
 
-    public Telephone(String phonetype, String phonenumber, Zoo zoo)
+    public Telephone(String phonetype, String phonenumber)
     {
         this.phonetype = phonetype;
         this.phonenumber = phonenumber;
-        this.zoo = zoo;
+
     }
 
     public Telephone(String phonetype)

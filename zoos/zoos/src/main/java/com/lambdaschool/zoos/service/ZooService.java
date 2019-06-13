@@ -12,7 +12,7 @@ public interface ZooService
 
     void delete (long id);
 
-//    Zoo save(Zoo zoo);
-//
-//    Zoo update(Zoo zoo,long id);
+    Zoo save(Zoo zoo);
+
+    Zoo update(Zoo zoo,long id);
 }
