@@ -12,6 +12,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 
+
 @Service(value = "zooService")
 public class ZooServiceImpl implements ZooService
 {
@@ -32,6 +33,7 @@ public class ZooServiceImpl implements ZooService
         if(zoorepos.findById(id).isPresent())
         {
             zoorepos.deleteZooFromZoos(id);
+            zoorepos.deletePhonesFromZoos(id);
             zoorepos.deleteById(id);
         }else
         {

@@ -22,4 +22,5 @@ public class AnimalServiceImpl implements AnimalService
         return animalrepos.getCountZoosOfAnimal();
     }
 
+
 }

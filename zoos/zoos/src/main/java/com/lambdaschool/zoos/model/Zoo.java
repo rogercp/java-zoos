@@ -16,7 +16,9 @@ public class Zoo
 
     private String zooname;
 
-    @OneToMany(mappedBy ="zoo")
+    @OneToMany(mappedBy ="zoo",
+                cascade = CascadeType.ALL,
+                orphanRemoval = true)
     @JsonIgnoreProperties("zoos")
     private List<Telephone> phones=new ArrayList<>();
 
@@ -39,9 +41,10 @@ public class Zoo
         this.animals = animals;
     }
 
-    public Zoo(String zooname)
+    public Zoo(List<Telephone> phones, List<Animal> animals)
     {
-        this.zooname = zooname;
+        this.phones = phones;
+        this.animals = animals;
     }
 
     public long getZooid()
